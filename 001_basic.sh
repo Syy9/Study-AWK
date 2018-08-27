@@ -99,3 +99,19 @@ ps ax | grep 'awk' | grep -v 'grep' | awk '{print $1}' # some psid
 
 ps ax | awk '/[a]wk/ {print $1}' # some psid
 
+echo "This is a pen" | awk '{print $0}' # This is a pen
+echo "This is a pen" | awk '{print $1}' # This
+echo "This is a pen" | awk '{print $2}' # is
+echo "This is a pen" | awk '{print $3}' # a
+echo "This is a pen" | awk '{print $4}' # pen
+echo "This is a pen" | awk '{print $NF}' # pen
+echo "This is a pen" | awk '{print $(NF-1)}' # a
+echo "This is a pen" | awk '{print $(NF-2)}' # is
+echo "This is a pen" | awk '{print $(NF-3)}' # This
+
+echo "a,b,c" | awk -F',' '{print $2}' # b
+
+echo "a b c" | awk '{$2 = ""; print}' # a  c
+echo "a b c" | awk '!($2 = "")' # a  c
+echo "a b c" | awk '{print $1, $3}' # a c
+
